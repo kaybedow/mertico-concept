@@ -168,7 +168,11 @@
   form input,form select,form textarea{width:100%;min-width:0;font:inherit;padding:11px 12px;border:1px solid var(--line);border-radius:var(--radius);background:#fff;color:var(--steel)}
   form textarea{min-height:110px;resize:vertical}
   .drop{border:2px dashed var(--line);border-radius:var(--radius);padding:22px;text-align:center;color:var(--graphite);background:#fff}
-  .drop input{display:block;margin:10px auto 0;border:0;padding:0;background:none}
+  .sr-only{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0}
+  .file-btn{display:inline-block!important;margin:12px 0 6px;padding:9px 16px!important;border:1px solid var(--steel);border-radius:var(--radius);font-weight:600;color:var(--steel);cursor:pointer;background:#fff}
+  .file-btn:hover{background:var(--steel);color:#fff}
+  #files:focus-visible + .file-btn{outline:3px solid var(--tarp);outline-offset:2px}
+  .file-name{display:block;font-size:.88rem}
   form label.check{flex-direction:row;align-items:flex-start;gap:10px;font-weight:400}
   form label.check input{width:auto;margin-top:4px}
   .note{grid-column:1/-1;background:#FFF4CC;padding:12px 14px;border-radius:var(--radius);display:none;margin:0}
@@ -197,7 +201,7 @@
 <header>
   <div class="wrap bar">
     <a class="logo" href="#top">MERTICO<span>.</span></a>
-    <nav id="nav" aria-label="Navigation">
+    <nav id="nav" aria-label="Navigation" data-uk-aria="Навігація">
       <a href="#produkte" data-uk="Продукція">Produkte</a>
       <a href="#ablauf" data-uk="Як ми працюємо">Ablauf</a>
       <a href="#fertigung" data-uk="Виробництво">Fertigung</a>
@@ -205,12 +209,12 @@
       <a class="tel-m" href="tel:+40751250785">+40 751 250 785</a>
     </nav>
     <a class="tel" href="tel:+40751250785">+40 751 250 785</a>
-    <div class="lang" role="group" aria-label="Sprache / Мова">
+    <div class="lang" role="group" aria-label="Sprache" data-uk-aria="Мова">
       <button type="button" data-lang="de" aria-pressed="true">DE</button>
       <button type="button" data-lang="uk" aria-pressed="false">UA</button>
     </div>
     <a class="btn" href="#anfrage" data-uk="Надіслати запит">Anfrage senden</a>
-    <button class="burger" type="button" aria-label="Menü" aria-expanded="false" aria-controls="nav">
+    <button class="burger" type="button" aria-label="Menü" data-uk-aria="Меню" aria-expanded="false" aria-controls="nav">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
     </button>
   </div>
@@ -222,17 +226,17 @@
   <div class="wrap">
     <div class="hero-grid">
       <div>
-        <h1 data-uk="Ангари й навіси під ваші розміри">Hallen und Überdachungen nach Maß</h1>
-        <p class="lead" data-uk="Mertico виготовляє в Тімішоарі тентові ангари, навіси, ПВХ-тенти та металоконструкції для промисловості, сільського господарства й HoReCa. Ви надсилаєте розміри або креслення, ми доставляємо вантажівкою до Німеччини, Австрії та Угорщини.">Mertico fertigt in Timișoara Zelthallen, Vordächer, PVC-Planen und Stahlkonstruktionen für Industrie, Landwirtschaft und Gastronomie. Sie senden Maße oder Zeichnung, wir liefern per LKW nach Deutschland, Österreich und Ungarn.</p>
+        <h1 data-uk="Ангари та навіси під ваші розміри">Hallen und Überdachungen nach Maß</h1>
+        <p class="lead" data-uk="Mertico виготовляє в Тімішоарі тентові ангари, навіси, ПВХ-тенти та металоконструкції для промисловості, сільського господарства та HoReCa. Ви надсилаєте розміри або креслення, ми доставляємо вантажівкою до Німеччини, Австрії та Угорщини.">Mertico fertigt in Timișoara Zelthallen, Vordächer, PVC-Planen und Stahlkonstruktionen für Industrie, Landwirtschaft und Gastronomie. Sie senden Maße oder Zeichnung, wir liefern per LKW nach Deutschland, Österreich und Ungarn.</p>
         <div class="actions">
-          <a class="btn" href="#anfrage" data-uk="Надіслати креслення й отримати пропозицію">Zeichnung senden und Angebot erhalten</a>
+          <a class="btn" href="#anfrage" data-uk="Надіслати креслення та отримати пропозицію">Zeichnung senden und Angebot erhalten</a>
           <a class="btn ghost" href="#produkte" data-uk="Переглянути продукцію">Produkte ansehen</a>
         </div>
       </div>
 
       <!-- Konfigurator -->
       <div class="config" id="config">
-        <div class="chips" id="chips" role="tablist" aria-label="Produkt"></div>
+        <div class="chips" id="chips" role="tablist" aria-label="Produkt" data-uk-aria="Продукт"></div>
         <div class="plan">
           <svg viewBox="0 0 400 300" fill="none" stroke-linejoin="round" stroke-linecap="round" role="img" aria-labelledby="cfgTitle">
             <title id="cfgTitle"></title>
@@ -252,7 +256,7 @@
     <div class="facts">
       <div><strong data-uk="Власне виробництво з ЧПК">Eigene Fertigung mit CNC</strong><span data-uk="Плазмове різання та гільйотина з ЧПК на заводі в Тімішоарі">Plasmaschneiden und CNC-Tafelschere im Werk Timișoara</span></div>
       <div><strong data-uk="Тентові тканини Sattler і Sioen">Planenstoffe von Sattler und Sioen</strong><span data-uk="Обробка POLYPLAN для ангарів, навісів і штор">POLYPLAN-Verarbeitung für Hallen, Vordächer und Vorhänge</span></div>
-      <div><strong data-uk="Виробництво в ЄС за румунськими цінами">Gefertigt in der EU zu rumänischen Preisen</strong><span data-uk="Без мита й митного оформлення, вантажівкою до Відня близько 1 дня">Ohne Zoll und Verzollung, per LKW in ca. 1 Tag in Wien</span></div>
+      <div><strong data-uk="Виробництво в ЄС за румунськими цінами">Gefertigt in der EU zu rumänischen Preisen</strong><span data-uk="Без мита та митного оформлення, вантажівкою до Відня близько 1 дня">Ohne Zoll und Verzollung, per LKW in ca. 1 Tag in Wien</span></div>
     </div>
   </div>
 </section>
@@ -261,7 +265,7 @@
   <div class="wrap">
     <div class="head">
       <h2 data-uk="Що ми виготовляємо">Was wir fertigen</h2>
-      <p class="lead" data-uk="Кожен проєкт плануємо під призначення, розміри й місце. Стандартних розмірів немає.">Jedes Projekt wird nach Einsatzzweck, Maßen und Umgebung geplant. Standardgrößen gibt es nicht.</p>
+      <p class="lead" data-uk="Кожен проєкт плануємо під призначення, розміри та місце. Стандартних розмірів немає.">Jedes Projekt wird nach Einsatzzweck, Maßen und Umgebung geplant. Standardgrößen gibt es nicht.</p>
     </div>
     <div class="products">
       <article class="product big">
@@ -276,7 +280,7 @@
         </svg></div>
         <div class="txt">
           <h3 data-uk="Тентові та складські ангари">Zelt- und Lagerhallen</h3>
-          <p data-uk="Сталевий каркас із тентом POLYPLAN для складів, логістики, сільського господарства (укриття для тварин, сінники) й спортивних майданчиків. Монтується швидше за капітальний ангар, за потреби переноситься.">Leichtbauhallen und Lagerzelte: Stahlrahmen mit POLYPLAN-Plane für Lager, Logistik, Landwirtschaft (Stallungen, Heulager) und Sportplätze. Schneller aufgebaut als eine Massivhalle und bei Bedarf versetzbar.</p>
+          <p data-uk="Сталевий каркас із тентом POLYPLAN для складів, логістики, сільського господарства (укриття для тварин, сінники) та спортивних майданчиків. Монтується швидше за капітальний ангар, за потреби переноситься.">Leichtbauhallen und Lagerzelte: Stahlrahmen mit POLYPLAN-Plane für Lager, Logistik, Landwirtschaft (Stallungen, Heulager) und Sportplätze. Schneller aufgebaut als eine Massivhalle und bei Bedarf versetzbar.</p>
           <button class="cfg-link" type="button" data-cfg="0" data-uk="Підібрати розміри">Maße wählen</button>
         </div>
       </article>
@@ -298,7 +302,7 @@
           <path d="M72 120 H228" stroke="#F2B705" stroke-width="3"/>
           <path d="M40 170 H260" stroke="#1D252C" stroke-width="1.5"/>
         </svg></div>
-        <div class="txt"><h3 data-uk="Павільйони та сцени">Pavillons und Bühnen</h3><p data-uk="Виставкові павільйони, сцени й тераси для HoReCa, подій і громадських просторів.">Messe- und Ausstellungspavillons, Bühnen und Terrassen für Gastronomie, Events und öffentliche Flächen.</p>
+        <div class="txt"><h3 data-uk="Павільйони та сцени">Pavillons und Bühnen</h3><p data-uk="Виставкові павільйони, сцени та тераси для HoReCa, подій і громадських просторів.">Messe- und Ausstellungspavillons, Bühnen und Terrassen für Gastronomie, Events und öffentliche Flächen.</p>
           <button class="cfg-link" type="button" data-cfg="2" data-uk="Підібрати розміри">Maße wählen</button></div>
       </article>
       <article class="product">
@@ -350,7 +354,7 @@
   </div>
 </section>
 
-<section class="refs" aria-label="Referenzen">
+<section class="refs" aria-label="Referenzen" data-uk-aria="Клієнти">
   <div class="wrap refs-grid">
     <p data-uk="Нашою продукцією користуються промислові компанії та відомі бренди, зокрема:">Unsere Produkte sind bei Industrie- und Markenkunden im Einsatz, unter anderem bei:</p>
     <div class="names">
@@ -368,8 +372,8 @@
     <div class="head"><h2 data-uk="Як проходить проєкт">So läuft ein Projekt ab</h2></div>
     <div class="steps">
       <div class="step"><h3 data-uk="Надішліть розміри або креслення">Maße oder Zeichnung senden</h3><p data-uk="Для початку вистачить фото з розмірами. Ескіз, DWG чи PDF пришвидшать розрахунок.">Ein Foto mit Maßen reicht für den Anfang. Eine Skizze, DWG oder PDF beschleunigt das Angebot.</p></div>
-      <div class="step"><h3 data-uk="Пропозиція та узгодження">Angebot und Abstimmung</h3><p data-uk="Пропонуємо конструкцію й покриття, погоджуємо з вами розрахунок, колір і терміни.">Wir schlagen Konstruktion und Eindeckung vor und klären Statik, Farbe und Termine mit Ihnen.</p></div>
-      <div class="step"><h3 data-uk="Виробництво в Тімішоарі">Fertigung in Timișoara</h3><p data-uk="Розкрій металу на верстатах із ЧПК, виготовлення каркаса й пошиття тентів на власному виробництві.">Blechzuschnitt auf CNC-Anlagen, Stahlbau und Planenkonfektion im eigenen Werk.</p></div>
+      <div class="step"><h3 data-uk="Пропозиція та узгодження">Angebot und Abstimmung</h3><p data-uk="Пропонуємо конструкцію та покриття, погоджуємо з вами розрахунок, колір і терміни.">Wir schlagen Konstruktion und Eindeckung vor und klären Statik, Farbe und Termine mit Ihnen.</p></div>
+      <div class="step"><h3 data-uk="Виробництво в Тімішоарі">Fertigung in Timișoara</h3><p data-uk="Розкрій металу на верстатах із ЧПК, виготовлення каркаса та пошиття тентів на власному виробництві.">Blechzuschnitt auf CNC-Anlagen, Stahlbau und Planenkonfektion im eigenen Werk.</p></div>
       <div class="step"><h3 data-uk="Доставка вантажівкою">Lieferung per LKW</h3><p data-uk="Надійно запаковано до самого об'єкта. Монтаж і терміни узгоджуємо в пропозиції.">Transportsicher verpackt bis zur Baustelle. Montage und Termine klären wir im Angebot.</p></div>
     </div>
   </div>
@@ -411,16 +415,16 @@
       <h3 data-uk="Тентові тканини">Planenstoffe</h3>
       <p class="lead tight" data-uk="Sattler, Sioen, Miederhoff та Iltellone, європейські виробники.">Sattler, Sioen, Miederhoff und Iltellone, alle aus Europa.</p>
       <h3 id="lieferung" class="block-gap" data-uk="Доставка з Тімішоари">Lieferung ab Timișoara</h3>
-      <p class="lead tight" data-uk="Румунія в ЄС: без мита, митного оформлення й простою на кордоні.">Rumänien ist EU-Mitglied: kein Zoll, keine Verzollung, keine Wartezeit an der Grenze.</p>
+      <p class="lead tight" data-uk="Румунія в ЄС: без мита, митного оформлення та простою на кордоні.">Rumänien ist EU-Mitglied: kein Zoll, keine Verzollung, keine Wartezeit an der Grenze.</p>
       <table>
         <thead><tr><th data-uk="Куди">Ziel</th><th data-uk="Дорогою, приблизно">Straße, ca.</th><th data-uk="Час у дорозі, приблизно">LKW-Fahrzeit, ca.</th></tr></thead>
         <tbody>
-          <tr><td data-uk="Будапешт, Угорщина">Budapest, Ungarn</td><td>300 km</td><td data-uk="менше 1 дня">unter 1 Tag</td></tr>
-          <tr><td data-uk="Відень, Австрія">Wien, Österreich</td><td>540 km</td><td data-uk="1 день">1 Tag</td></tr>
-          <tr><td data-uk="Мюнхен, Баварія">München, Bayern</td><td>970 km</td><td data-uk="1–2 дні">1–2 Tage</td></tr>
+          <tr><td data-uk="Будапешт, Угорщина">Budapest, Ungarn</td><td data-uk="300 км">300 km</td><td data-uk="менше 1 дня">unter 1 Tag</td></tr>
+          <tr><td data-uk="Відень, Австрія">Wien, Österreich</td><td data-uk="540 км">540 km</td><td data-uk="1 день">1 Tag</td></tr>
+          <tr><td data-uk="Мюнхен, Баварія">München, Bayern</td><td data-uk="970 км">970 km</td><td data-uk="1–2 дні">1–2 Tage</td></tr>
         </tbody>
       </table>
-      <p class="small-note" data-uk="Термін виготовлення й вартість доставки вказуємо в пропозиції залежно від обсягу та місця.">Fertigungszeit und Transportkosten nennen wir im Angebot, abhängig von Umfang und Lieferort.</p>
+      <p class="small-note" data-uk="Термін виготовлення та вартість доставки вказуємо в пропозиції залежно від обсягу та місця.">Fertigungszeit und Transportkosten nennen wir im Angebot, abhängig von Umfang und Lieferort.</p>
     </div>
   </div>
 </section>
@@ -454,7 +458,12 @@
       <label><span data-uk="Розміри">Maße</span><input name="masse" id="masse" placeholder="z. B. 12 × 30 × 6 m" data-uk-ph="напр. 12 × 30 × 6 м"></label>
       <label class="full"><span data-uk="Місце доставки (країна, індекс)">Lieferort (Land, PLZ)</span><input name="lieferort" autocomplete="postal-code" placeholder="z. B. Deutschland, 80331" data-uk-ph="напр. Німеччина, 80331"></label>
       <label class="full"><span data-uk="Повідомлення">Nachricht</span><textarea name="nachricht" placeholder="Einsatzzweck, gewünschter Termin, Montage ja oder nein" data-uk-ph="Призначення, бажаний термін, чи потрібен монтаж"></textarea></label>
-      <div class="drop full"><span data-uk="Креслення, ескіз або фото (PDF, DWG, JPG), до 25 МБ">Zeichnung, Skizze oder Fotos (PDF, DWG, JPG), bis 25 MB</span><input type="file" name="dateien" multiple aria-label="Dateien"></div>
+      <div class="drop full">
+        <span data-uk="Креслення, ескіз або фото (PDF, DWG, JPG), до 25 МБ">Zeichnung, Skizze oder Fotos (PDF, DWG, JPG), bis 25 MB</span>
+        <input type="file" name="dateien" id="files" multiple class="sr-only">
+        <label for="files" class="file-btn" data-uk="Обрати файли">Dateien auswählen</label>
+        <span class="file-name" id="fileName" data-uk="Файл не вибрано">Keine Datei ausgewählt</span>
+      </div>
       <label class="check full"><input type="checkbox" required> <span data-uk="Я прочитав(-ла) політику конфіденційності та погоджуюся з нею.">Ich habe die Datenschutzerklärung gelesen und akzeptiere sie.</span></label>
       <div class="full"><button class="btn" type="submit" data-uk="Надіслати запит">Anfrage senden</button></div>
       <p class="note" id="note" role="status" data-uk="Це дизайн-концепт: форма не підключена, дані не надіслано.">Dies ist ein Designkonzept: Das Formular ist nicht angebunden, es wurden keine Daten gesendet.</p>
@@ -466,7 +475,7 @@
 
 <footer>
   <div class="wrap">
-    <span><strong>Mertico SRL</strong>, Timișoara</span>
+    <span><strong>Mertico SRL</strong>, <span data-uk="Тімішоара">Timișoara</span></span>
     <span data-uk="Концепт редизайну, автор Кирило Кайбедов. Не є офіційним сайтом Mertico SRL.">Konzeptstudie für ein Redesign, erstellt von Kyrylo Kaibedov. Kein offizieller Auftritt der Mertico SRL.</span>
   </div>
 </footer>
@@ -501,9 +510,14 @@
       if (el.dataset.dePh === undefined) el.dataset.dePh = el.placeholder;
       el.placeholder = l === 'uk' ? el.dataset.ukPh : el.dataset.dePh;
     });
+    document.querySelectorAll('[data-uk-aria]').forEach(function(el){
+      if (el.dataset.deAria === undefined) el.dataset.deAria = el.getAttribute('aria-label');
+      el.setAttribute('aria-label', l === 'uk' ? el.dataset.ukAria : el.dataset.deAria);
+    });
     document.querySelectorAll('.lang button').forEach(function(b){
       b.setAttribute('aria-pressed', b.dataset.lang === l);
     });
+    showFiles();
     renderConfig();
     try { localStorage.setItem('mertico-lang', l); } catch(e) {}
   }
@@ -535,7 +549,8 @@
   }
   function ground(y){ return pth('M12 ' + f1(y) + ' H390', INK, 1.5); }
   function clamp(v, a, b){ return Math.max(a, Math.min(b, v)); }
-  function m(v){ return fmt(v) + ' m'; }
+  function u(){ return lang === 'uk' ? 'м' : 'm'; }
+  function m(v){ return fmt(v) + ' ' + u(); }
   function T(de, uk){ return lang === 'uk' ? uk : de; }
 
   var products = [
@@ -545,7 +560,7 @@
         {id: 'l', de: 'Länge', uk: 'Довжина', min: 10, max: 60, step: 1, val: 30, unit: 'm'},
         {id: 'h', de: 'Traufhöhe', uk: 'Висота стін', min: 3, max: 8, step: 0.5, val: 5, unit: 'm'}],
       sum: function(v){ return [[T('Hallenfläche', 'Площа ангара'), area(v.w * v.l)]]; },
-      masse: function(v){ return v.w + ' × ' + v.l + ' × ' + fmt(v.h) + ' m'; },
+      masse: function(v){ return v.w + ' × ' + v.l + ' × ' + fmt(v.h) + ' ' + u(); },
       draw: function(v){
         var ridge = v.h + v.w * 0.18, depth = v.l * 0.45;
         var s = Math.min(260 / (v.w + depth * 0.85), 175 / (ridge + depth * 0.45));
@@ -573,7 +588,7 @@
         {id: 't', de: 'Tiefe', uk: 'Виліт', min: 1.5, max: 8, step: 0.5, val: 4, unit: 'm'},
         {id: 'h', de: 'Durchfahrtshöhe', uk: 'Висота проїзду', min: 2.2, max: 5, step: 0.1, val: 3, unit: 'm'}],
       sum: function(v){ return [[T('Überdachte Fläche', 'Площа під навісом'), area(v.b * v.t)]]; },
-      masse: function(v){ return fmt(v.b) + ' × ' + fmt(v.t) + ' × ' + fmt(v.h) + ' m'; },
+      masse: function(v){ return fmt(v.b) + ' × ' + fmt(v.t) + ' × ' + fmt(v.h) + ' ' + u(); },
       draw: function(v){
         var k = 0.6, rise = v.t * 0.12;
         var s = Math.min(255 / (v.b + v.t * k * 0.85), 170 / (v.h + rise + 1.1 + v.t * k * 0.45));
@@ -601,7 +616,7 @@
         {id: 'a', de: 'Seitenlänge', uk: 'Сторона', min: 3, max: 12, step: 0.5, val: 6, unit: 'm'},
         {id: 'h', de: 'Höhe bis Dach', uk: 'Висота до даху', min: 2.2, max: 4, step: 0.1, val: 2.6, unit: 'm'}],
       sum: function(v){ return [[T('Grundfläche', 'Площа'), area(v.a * v.a)]]; },
-      masse: function(v){ return fmt(v.a) + ' × ' + fmt(v.a) + ' × ' + fmt(v.h) + ' m'; },
+      masse: function(v){ return fmt(v.a) + ' × ' + fmt(v.a) + ' × ' + fmt(v.h) + ' ' + u(); },
       draw: function(v){
         var rh = v.a * 0.32, s = Math.min(240 / (v.a * 1.08), 175 / (v.h + rh));
         var fw = v.a * s, fh = v.h * s, fr = rh * s, x0 = 200 - fw / 2, y0 = Math.min(240, 150 + (fh + fr) / 2);
@@ -621,7 +636,7 @@
     }
   ];
 
-  function area(n){ return (Math.round(n * 10) / 10).toLocaleString(lang === 'uk' ? 'uk-UA' : 'de-DE') + ' m²'; }
+  function area(n){ return (Math.round(n * 10) / 10).toLocaleString(lang === 'uk' ? 'uk-UA' : 'de-DE') + ' ' + u() + '²'; }
 
   var current = 0, values = products.map(function(p){ var o = {}; p.params.forEach(function(q){ o[q.id] = q.val; }); return o; });
   var chipsEl = document.getElementById('chips'), controlsEl = document.getElementById('controls');
@@ -642,7 +657,7 @@
   }
   function update(){
     var p = products[current], v = values[current];
-    p.params.forEach(function(q){ document.getElementById('o_' + q.id).textContent = (q.unit === 'mm' ? v[q.id] : fmt(v[q.id])) + ' ' + q.unit; });
+    p.params.forEach(function(q){ document.getElementById('o_' + q.id).textContent = fmt(v[q.id]) + ' ' + u(); });
     drawEl.innerHTML = p.draw(v);
     document.getElementById('cfgTitle').textContent = lang === 'uk' ? p.title[1] : p.title[0];
     sumEl.innerHTML = p.sum(v).map(function(r){ return '<div><span>' + r[0] + '</span><strong>' + r[1] + '</strong></div>'; }).join('');
@@ -678,10 +693,33 @@
   });
 
 
+  /* Datei-Auswahl: eigener Text statt Browser-Sprache */
+  var files = document.getElementById('files'), fileName = document.getElementById('fileName');
+  function showFiles(){
+    var n = files.files.length;
+    if (!n) { fileName.textContent = lang === 'uk' ? fileName.dataset.uk : (fileName.dataset.de || fileName.textContent); return; }
+    fileName.textContent = n === 1 ? files.files[0].name : (lang === 'uk' ? 'Файлів: ' : 'Dateien: ') + n;
+  }
+  files.addEventListener('change', showFiles);
+
   /* Formular (Konzept) */
   var form = document.getElementById('form');
+  /* Fehlermeldungen in der Seitensprache statt in der Browsersprache */
+  function msg(el){
+    if (el.validity.valueMissing) return el.type === 'checkbox'
+      ? T('Bitte bestätigen Sie die Datenschutzerklärung.', 'Підтвердьте, будь ласка, згоду з політикою конфіденційності.')
+      : T('Bitte füllen Sie dieses Feld aus.', 'Заповніть, будь ласка, це поле.');
+    if (el.validity.typeMismatch) return T('Bitte geben Sie eine gültige E-Mail-Adresse ein.', 'Введіть, будь ласка, коректну адресу пошти.');
+    return '';
+  }
+  form.querySelectorAll('input[required], input[type=email]').forEach(function(el){
+    el.addEventListener('invalid', function(){ el.setCustomValidity(msg(el)); });
+    el.addEventListener('input', function(){ el.setCustomValidity(''); });
+    el.addEventListener('change', function(){ el.setCustomValidity(''); });
+  });
   form.addEventListener('submit', function(e){
     e.preventDefault();
+    form.querySelectorAll('input').forEach(function(el){ el.setCustomValidity(''); });
     if (!form.reportValidity()) return;
     document.getElementById('note').style.display = 'block';
   });
